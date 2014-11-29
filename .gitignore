@@ -24,5 +24,6 @@ proguard/
 
 # Log Files
 *.log
+
 www/js/config.js
 ant-build
