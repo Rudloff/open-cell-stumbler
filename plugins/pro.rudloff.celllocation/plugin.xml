@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://www.phonegap.com/ns/plugins/1.0"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        id="pro.rudloff.celllocation"
+        version="1.0.1">
+    
+    <name>CellLocation</name>
+    <description>This plugin will get GSMCellLocation information.</description>
+    <author>Pierre Rudloff</author>
+    <keywords>android, telephony manager, device information</keywords>
+    <license>MIT</license>
+    
+    <engines>
+        <engine name="cordova" version=">=3.0.0" />
+    </engines>
+    
+    <js-module src="www/celllocation.js" name="CellLocation">
+        <clobbers target="cordova.plugins.cellLocation" />
+    </js-module>
+    
+    <asset src="www/celllocation.js" target="celllocation.js" />
+   
+    <platform name="android">
+        
+        <source-file src="src/pro/rudloff/cordova/plugins/CellLocation.java" target-dir="src/pro/rudloff/cordova/plugins" />       
+        
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="CellLocation">
+                <param name="android-package" value="pro.rudloff.cordova.plugins.CellLocation" />
+            </feature>
+        </config-file>
+
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+            <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+        </config-file>
+     </platform>
+
+</plugin>
+

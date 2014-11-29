@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Hello World</title>
+        <script src="cordova.js"></script>
+        <script src="js/index.js"></script>
+    </head>
+    <body>
+        <button id="togglescan">Start</button>
+        <h2>Cell Info</h2>
+        <table>
+            <tr><th>Cell ID</th><td id="cellid"></td></tr>
+            <tr><th>MNC</th><td id="mnc"></td></tr>
+            <tr><th>MCC</th><td id="mcc"></td></tr>
+            <tr><th>LAC</th><td id="lac"></td></tr>
+            <tr><th>Network Name</th><td id="netname"></td></tr>
+            <tr><th>Country</th><td id="country"></td></tr>
+        </table>
+        <h2>Location</h2>
+        <table>
+            <tr><th>Latitude</th><td id="latitude"></td></tr>
+            <tr><th>Longitude</th><td id="longitude"></td></tr>
+        </table>
+        <h2>Measurements</h2>
+        <table>
+            <tr><th>Measured</th><td id="measured">0</td></tr>
+            <tr><th>Sent</th><td id="sent">0</td></tr>
+        </table>
+    </body>
+</html>
