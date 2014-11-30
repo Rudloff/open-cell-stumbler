@@ -1,4 +1,4 @@
-/*global cordova */
+/*global cordova, config */
 /*jslint browser: true, devel: true */
 var cellLocation, lastPosition, scanning = false, updateCellInterval, locationWatch, togglescan;
 
@@ -20,17 +20,20 @@ function updateCell() {
 
 function sendCell(cell, position) {
     'use strict';
-    var oReq = new XMLHttpRequest(), url = 'http://opencellid.org/measure/add?key=' + apiKey + '&lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&mcc=' + cell.MCC + '&mnc=' + cell.MNC + '&lac=' + cell.LAC + '&cellid=' + cell.CID + '&rating=' + position.coords.accuracy + '&speed=' + position.coords.speed + '&direction=' + position.coords.heading + '&measured_at=' +  position.timestamp;
+    var oReq = new XMLHttpRequest(),
+        url = 'http://opencellid.org/measure/add?key=' + config.apiKey + '&lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&mcc=' + cell.MCC + '&mnc=' + cell.MNC + '&lac=' + cell.LAC + '&cellid=' + cell.CID + '&rating=' + position.coords.accuracy + '&speed=' + position.coords.speed + '&direction=' + position.coords.heading + '&measured_at=' +  position.timestamp,
+        sent = document.getElementById('sent'),
+        measured = document.getElementById('measured');
     oReq.open('GET', url, true);
     console.log(url);
     oReq.send(null);
     oReq.onreadystatechange = function () {
         if (oReq.readyState === 4) {
-            document.getElementById('sent').textContent += 1;
+            sent.textContent = parseInt(sent.textContent, 10) + 1;
             console.log(oReq.responseText);
         }
     };
-    document.getElementById('measured').textContent += 1;
+    measured.textContent = parseInt(measured.textContent, 10) + 1;
 }
 
 function getCell(position) {
