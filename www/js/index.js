@@ -20,7 +20,7 @@ function updateCell() {
 
 function sendCell(cell, position) {
     'use strict';
-    var oReq = new XMLHttpRequest(), url = 'http://opencellid.org/measure/add?key=' + apiKey + '&lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&mcc=' + cell.MCC + '&mnc=' + cell.MNC + '&lac=' + cell.LAC + '&cellid=' + cell.CID + '&rating=' + position.coords.accuracy + '&speed=' + position.coords.speed + '&direction=' + position.coords.heading + '&measured_at=' +  new Date().getTime();
+    var oReq = new XMLHttpRequest(), url = 'http://opencellid.org/measure/add?key=' + apiKey + '&lat=' + position.coords.latitude + '&lon=' + position.coords.longitude + '&mcc=' + cell.MCC + '&mnc=' + cell.MNC + '&lac=' + cell.LAC + '&cellid=' + cell.CID + '&rating=' + position.coords.accuracy + '&speed=' + position.coords.speed + '&direction=' + position.coords.heading + '&measured_at=' +  position.timestamp;
     oReq.open('GET', url, true);
     console.log(url);
     oReq.send(null);
@@ -70,7 +70,7 @@ function toggleScanning() {
     } else {
         console.log('Start scanning');
         updateCell();
-        locationWatch = navigator.geolocation.watchPosition(updateLocation, noLocation, { enableHighAccuracy: true });
+        locationWatch = navigator.geolocation.watchPosition(updateLocation, noLocation, { enableHighAccuracy: true, maximumAge: 0 });
         updateCellInterval = setInterval(updateCell, 60000);
         scanning = true;
         togglescan.textContent = 'Stop';
