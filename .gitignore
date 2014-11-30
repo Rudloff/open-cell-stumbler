@@ -27,3 +27,4 @@ proguard/
 
 www/js/config.js
 ant-build
+platforms/android/assets/
