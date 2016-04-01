@@ -4,13 +4,13 @@
     <feature name="CellLocation">
         <param name="android-package" value="pro.rudloff.cordova.plugins.CellLocation" />
     </feature>
-    <feature name="Device">
-        <param name="android-package" value="org.apache.cordova.device.Device" />
-    </feature>
     <feature name="BackgroundMode">
         <param name="android-package" value="de.appplant.cordova.plugin.background.BackgroundMode" />
     </feature>
     <preference name="KeepRunning" value="true" />
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
     <name>OpenCellStumbler</name>
     <description>
         Open source cell ID stumbler
